@@ -17,7 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_api.v1.router import api_v1 as ninja_api_v1
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/", ninja_api_v1.urls),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

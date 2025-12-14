@@ -3,7 +3,7 @@ from typing import Any
 
 from django.http import HttpRequest
 
-from bifrost.common.rest_api.utils.get_object_or_404 import get_object_or_raise_404
+from common.api.get_object_or_404 import get_object_or_raise_404
 from cars.models import Car
 from common.api.schemas import BaseOutSchema
 from orders.models import Order
