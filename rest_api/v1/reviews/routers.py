@@ -7,7 +7,7 @@ from common.api.tags import OpenApiTags, ApiSummary
 
 from rest_api.v1.reviews.api.create_review import create_review
 from rest_api.v1.reviews.api.review_list import review_list
-from rest_api.v1.reviews.schemas.output import ReviewsOutSchema
+from rest_api.v1.reviews.schemas.output import ReviewOutSchema
 
 router = Router(tags=[OpenApiTags.Reviews])
 
@@ -16,7 +16,7 @@ router.add_api_operation(
     path="/",
     view_func=review_list,
     response={
-        HTTPStatus.OK: list[ReviewsOutSchema]
+        HTTPStatus.OK: list[ReviewOutSchema]
     },
     summary=ApiSummary.GET_REVIEWS,
 )

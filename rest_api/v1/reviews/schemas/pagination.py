@@ -1,6 +1,5 @@
 from common.api.pagination import GenericLimitOffsetPagination
-from rest_api.v1.orders.schemas.output import OrdersOutSchema
-from rest_api.v1.reviews.schemas.output import ReviewsOutSchema
+from rest_api.v1.reviews.schemas.output import ReviewOutSchema
 
 
-class ReviewPagination(GenericLimitOffsetPagination[ReviewsOutSchema]): ...
+class ReviewPagination(GenericLimitOffsetPagination[ReviewOutSchema]): ...
