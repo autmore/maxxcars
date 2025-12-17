@@ -26,11 +26,10 @@ services:
       - .env
     command: >
       sh -c "python manage.py makemigrations &&
-             python manage.py migrate &&
-             python manage.py init_db_values &&
-             python manage.py collectstatic --noinput &&
-             gunicorn AnyaProject.wsgi:application --bind 0.0.0.0:8000" &&
-
+                   python manage.py migrate &&
+                   python manage.py init_db_values &&
+                   python manage.py collectstatic --noinput &&
+                   gunicorn AnyaProject.wsgi:application --bind 0.0.0.0:8000" &&
     volumes:
       - static_volume:/app/static
     depends_on:
@@ -38,6 +37,13 @@ services:
     expose:
       - 8000
 
+  frontend:
+    build:
+      context: ../frontend
+    container_name: frontend
+    restart: always
+    expose:
+      - 80
 
   nginx:
     image: nginx:latest
@@ -50,9 +56,8 @@ services:
       - static_volume:/app/static
     depends_on:
       - web
+      - frontend
 
 volumes:
   postgres_data:
   static_volume:
-
-
